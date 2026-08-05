@@ -75,3 +75,57 @@ terraform/
 ├── main.tf
 ├── variables.tf
 └── outputs.tf
+```
+### Phase 3: Network Security & Segmentation
+Isolated workloads using network segmentation to prevent lateral movement.
+
+Configured isolated Virtual Networks (VNets) and micro-segmented Subnets.
+
+Enforced strict ingress/egress rules using Network Security Groups (NSGs).
+
+### Phase 4: Identity & Access Management (IAM)
+Implemented granular access controls aligned with the Principle of Least Privilege.
+
+Customized Azure RBAC assignments for human and machine identities.
+
+Elimination of overly permissive default roles across management groups.
+
+### Phase 5: Secrets & Credentials Management
+Zero-hardcoded secrets policy implemented across application and infrastructure layers.
+
+Centralized storage for API keys, storage account tokens, and database credentials inside Azure Key Vault.
+
+Automated access via Managed Identities to eliminate static secrets.
+
+### Phase 6: Cloud Governance & Compliance
+Maintained resource compliance and prevented accidental configuration alterations.
+
+Implemented Azure Policies to enforce resource compliance and tagging strategies.
+
+Applied Resource Locks to prevent critical resource destruction.
+
+### Phase 7: Continuous Monitoring & Security Operations
+End-to-end visibility and real-time threat detection across the infrastructure.
+
+Integrated Log Analytics Workspace for centralized diagnostic log collection.
+
+Enabled Microsoft Defender for Cloud and Azure Monitor for security alerting and compliance monitoring.
+
+### Phase 8: DevSecOps CI/CD Pipeline
+Automated pipeline integrating security checks into every stage of the software delivery lifecycle.
+
+[ Developer ] ──> [ Pull Request ] ──> [ GitHub Actions Pipeline ]
+                                                 │
+            ┌────────────────────────────────────┴────────────────────────────────────┐
+            ▼                                    ▼                                    ▼
+   [ Terraform Fmt/Validate ]           [ Security Scanning ]                [ Terraform Plan/Apply ]
+
+   
+### 🛠️ Demonstrated Core Competencies
+Cloud Architecture & Engineering: Azure Networking, IaC Architecture, Modular Design.
+
+DevSecOps & Automation: GitHub Actions CI/CD, Automated Security Checks, Terraform.
+
+Cybersecurity & Governance: Zero Trust Architecture, RBAC, Secrets Management, Azure Policy, Defender for Cloud.
+
+Observability & Ops: Diagnostic Logging, Threat Detection, SIEM/Telemetry Integration.
