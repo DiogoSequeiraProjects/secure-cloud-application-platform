@@ -1,18 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Cloud Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
-<h1>Secure Cloud Application Platform</h1>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
-<p>
-Production-ready Flask application prepared for Azure,
-Terraform and DevSecOps.
-</p>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark">◆</span>
+            <span class="brand-name">Secure Cloud Platform</span>
+        </div>
+        <div class="overall-status" role="status">
+            <span class="pulse-dot pulse-ok" aria-hidden="true"></span>
+            <span class="overall-status-text">{{ platform.status }}</span>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="intro">
+            <p class="eyebrow">Flask &middot; Azure &middot; Terraform &middot; DevSecOps</p>
+            <h1>Production-ready cloud application platform</h1>
+            <p class="lede">
+                A hardened Flask application, provisioned as code and deployed to Azure,
+                with security and observability built in from the first commit.
+            </p>
+        </section>
+
+        <section class="card-grid" aria-label="Platform overview">
+
+            <article class="card">
+                <div class="card-head">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.5L16 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="card-eyebrow">Status</p>
+                        <h2 class="card-title">Platform Status</h2>
+                    </div>
+                    <span class="status-pill status-ok">
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Operational
+                    </span>
+                </div>
+                <dl class="metric-list">
+                    <div class="metric-row">
+                        <dt>Uptime (30d)</dt>
+                        <dd>{{ platform.uptime }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Environment</dt>
+                        <dd>{{ platform.environment }} &middot; {{ platform.cloud }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Active services</dt>
+                        <dd>{{ platform.services }}</dd>
+                    </div>
+                </dl>
+                <p class="card-footnote">Last deploy verified and healthy.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-head">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V8a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor"/></svg>
+                    </span>
+                    <div>
+                        <p class="card-eyebrow">DevSecOps</p>
+                        <h2 class="card-title">Security</h2>
+                    </div>
+                    <span class="status-pill status-ok">
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Protected
+                    </span>
+                </div>
+                <dl class="metric-list">
+                    <div class="metric-row">
+                        <dt>Open vulnerabilities</dt>
+                        <dd>{{ platform.critical_vulnerabilities }} critical · {{ platform.high_vulnerabilities }} high</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Secrets scanning</dt>
+                        <dd>{{ platform.secret_scanning }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Last audit</dt>
+                        <dd>{{ platform.audit }}</dd>
+                    </div>
+                </dl>
+                <p class="card-footnote">Scans run on every pull request.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-head">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4" width="17" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="3.5" y="14" width="17" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg>
+                    </span>
+                    <div>
+                        <p class="card-eyebrow">Infrastructure as Code</p>
+                        <h2 class="card-title">Infrastructure</h2>
+                    </div>
+                    <span class="status-pill status-ok">
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Provisioned
+                    </span>
+                </div>
+                <dl class="metric-list">
+                    <div class="metric-row">
+                        <dt>Managed by</dt>
+                        <dd>{{ platform.iac }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Region</dt>
+                        <dd>{{ platform.region }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Drift detected</dt>
+                        <dd>{{ platform.drift }}</dd>
+                    </div>
+                </dl>
+                <p class="card-footnote">State reconciled on last apply.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-head">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 13.5L8 13.5L10 8L14 18L16.5 10.5L18.5 13.5L20.5 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="card-eyebrow">Observability</p>
+                        <h2 class="card-title">Monitoring</h2>
+                    </div>
+                    <span class="status-pill status-ok">
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Watching
+                    </span>
+                </div>
+                <dl class="metric-list">
+                    <div class="metric-row">
+                        <dt>Active alerts</dt>
+                        <dd>{{ platform.alerts }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Avg response time</dt>
+                        <dd>{{ platform.response_time }}</dd>
+                    </div>
+                    <div class="metric-row">
+                        <dt>Last incident</dt>
+                        <dd>{{ platform.incident }}</dd>
+                    </div>
+                </dl>
+                <p class="card-footnote">Logs and metrics streamed in real time.</p>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>Secure Cloud Application Platform &middot; built with Flask, Azure &amp; Terraform</p>
+    </footer>
 
 </body>
 </html>
