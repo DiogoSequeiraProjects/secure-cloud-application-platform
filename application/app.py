@@ -1,13 +1,14 @@
-
 from flask import Flask, render_template
+from config import Config
 import logging
 
 app = Flask(__name__)
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=Config.LOG_LEVEL,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
 
 @app.route("/")
 def home():
@@ -20,7 +21,7 @@ def home():
 
         "uptime": "99.98%",
 
-        "environment": "Production",
+        "environment": Config.FLASK_ENV.capitalize(),
 
         "cloud": "Microsoft Azure",
 
@@ -38,7 +39,7 @@ def home():
 
         "iac": "Terraform",
 
-        "region": "West Europe",
+        "region": Config.AZURE_REGION,
 
         "drift": "None",
 
@@ -46,7 +47,11 @@ def home():
 
         "response_time": "142 ms",
 
-        "incident": "None in 30d"
+        "incident": "None in 30d",
+
+        "version": Config.APP_VERSION,
+
+        "application_name": Config.APP_NAME
 
     }
 
@@ -55,35 +60,51 @@ def home():
         platform=platform
     )
 
-@app.route("/metrics")
-def metrics():
-
-    return {
-
-        "application": "Secure Cloud Platform",
-
-        "version": "1.0.0",
-
-        "environment": "Production",
-
-        "cloud": "Azure",
-
-        "iac": "Terraform",
-
-        "pipeline": "GitHub Actions",
-
-        "status": "Operational"
-
-    }
 
 @app.route("/health")
 def health():
+
+    app.logger.info("Health endpoint accessed")
+
     return {
         "status": "healthy",
-        "application": "Secure Cloud Platform"
+        "application": Config.APP_NAME,
+        "version": Config.APP_VERSION
+    }
+
+
+@app.route("/metrics")
+def metrics():
+
+    app.logger.info("Metrics endpoint accessed")
+
+    return {
+
+        "application": Config.APP_NAME,
+
+        "version": Config.APP_VERSION,
+
+        "environment": Config.FLASK_ENV,
+
+        "status": "Operational",
+
+        "cloud": "Microsoft Azure",
+
+        "iac": "Terraform",
+
+        "region": Config.AZURE_REGION,
+
+        "pipeline": "GitHub Actions"
+
     }
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
 
+    app.logger.info(f"Starting {Config.APP_NAME}")
+
+    app.run(
+        host="0.0.0.0",
+        port=Config.PORT,
+        debug=Config.FLASK_ENV == "development"
+    )
