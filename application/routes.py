@@ -54,8 +54,6 @@ def register_routes(app):
             platform=platform
         )
 
-
-
     @app.route("/health")
     def health():
 
@@ -70,8 +68,6 @@ def register_routes(app):
             "version": Config.APP_VERSION
 
         }
-
-
 
     @app.route("/metrics")
     def metrics():
@@ -95,5 +91,4 @@ def register_routes(app):
             "region": Config.AZURE_REGION,
 
             "pipeline": "GitHub Actions"
-
         }

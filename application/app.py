@@ -4,14 +4,26 @@ import logging
 from config import Config
 from routes import register_routes
 
-app = Flask(__name__)
 
-logging.basicConfig(
-    level=Config.LOG_LEVEL,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+def create_app():
+    """
+    Application Factory.
+    Creates and configures the Flask application.
+    """
 
-register_routes(app)
+    app = Flask(__name__)
+
+    logging.basicConfig(
+        level=Config.LOG_LEVEL,
+        format="%(asctime)s - %(levelname)s - %(message)s"
+    )
+
+    register_routes(app)
+
+    return app
+
+
+app = create_app()
 
 
 if __name__ == "__main__":
