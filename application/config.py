@@ -18,6 +18,11 @@ class Config:
         "development"
     )
 
+    HOST = os.getenv(
+        "FLASK_HOST",
+        "127.0.0.1"
+    )
+
     PORT = int(
         os.getenv(
             "FLASK_PORT",

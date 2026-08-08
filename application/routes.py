@@ -27,7 +27,7 @@ def register_routes(app):
 
             "high_vulnerabilities": "0",
 
-            "secret_scanning": "Enabled",
+            "secret_scanning": "Enabled",  # nosec B105
 
             "audit": "Passed",
 

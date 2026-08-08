@@ -31,7 +31,7 @@ if __name__ == "__main__":
     app.logger.info(f"Starting {Config.APP_NAME}")
 
     app.run(
-        host="0.0.0.0",
+        host=Config.HOST,
         port=Config.PORT,
         debug=Config.FLASK_ENV == "development"
     )
