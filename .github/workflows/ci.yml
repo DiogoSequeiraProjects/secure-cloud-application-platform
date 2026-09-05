@@ -56,3 +56,19 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
+      
+      - name: Install Syft
+        uses: anchore/sbom-action/download-syft@v0
+
+      - name: Generate SBOM
+        run: |
+          syft secure-cloud-platform:latest \
+            -o cyclonedx-json \
+            > sbom.json
+
+            - name: Upload SBOM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: secure-cloud-platform-sbom
+          path: sbom.json
+          retention-days: 30
