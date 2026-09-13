@@ -13,7 +13,8 @@ COPY requirements.txt .
 
 RUN python -m pip install --no-cache-dir --upgrade pip setuptools \
     && python -m pip install --no-cache-dir -r requirements.txt \
-    && python -m pip install --no-cache-dir "msgpack>=1.2.1"
+    && python -m pip install --no-cache-dir "msgpack>=1.2.1" \
+    && rm -f /usr/local/lib/python3.13/site-packages/pip/_vendor/bom.cdx.json
 
 COPY . .
 
