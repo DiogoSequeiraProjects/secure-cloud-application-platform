@@ -1,4 +1,4 @@
-name: Secure Cloud Platform CI
+﻿name: Secure Cloud Platform CI
 
 on:
   push:
@@ -16,6 +16,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Install Checkov
+        run: |
+          python -m pip install checkov==3.3.30
+
+      - name: Run Checkov Terraform Security Scan
+        run: |
+          checkov -d ./terraform --framework terraform
 
       - name: Set up Python
         uses: actions/setup-python@v5

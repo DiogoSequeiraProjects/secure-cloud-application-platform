@@ -16,18 +16,6 @@ resource "azurerm_network_security_group" "application" {
   }
 
   security_rule {
-    name                       = "Allow-HTTP-Inbound"
-    priority                   = 110
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "Internet"
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
     name                       = "Deny-SSH-Inbound"
     priority                   = 200
     direction                  = "Inbound"
@@ -54,7 +42,20 @@ resource "azurerm_network_security_group" "application" {
   tags = local.common_tags
 }
 
+resource "azurerm_network_security_group" "management" {
+  name                = "${local.name_prefix}-management-nsg"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.main.name
+
+  tags = local.common_tags
+}
+
 resource "azurerm_subnet_network_security_group_association" "application" {
   subnet_id                 = azurerm_subnet.application.id
   network_security_group_id = azurerm_network_security_group.application.id
+}
+
+resource "azurerm_subnet_network_security_group_association" "management" {
+  subnet_id                 = azurerm_subnet.management.id
+  network_security_group_id = azurerm_network_security_group.management.id
 }
