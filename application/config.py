@@ -39,3 +39,8 @@ class Config:
         "AZURE_REGION",
         "West Europe"
     )
+
+    DEBUG = os.getenv(
+        "FLASK_DEBUG",
+        "false"
+    ).strip().lower() in ("1", "true", "yes", "on")
