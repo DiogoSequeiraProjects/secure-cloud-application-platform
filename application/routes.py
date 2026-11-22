@@ -11,7 +11,7 @@ def register_routes(app):
 
         platform = {
 
-            "status": "Operational",
+            "status": "Demo",
 
             "uptime": "99.98%",
 
@@ -21,7 +21,7 @@ def register_routes(app):
 
             "services": "6 / 6",
 
-            "security_status": "Protected",
+            "security_status": "Sample",
 
             "critical_vulnerabilities": "0",
 
@@ -82,7 +82,7 @@ def register_routes(app):
 
             "environment": Config.FLASK_ENV,
 
-            "status": "Operational",
+            "status": "Demo",
 
             "cloud": "Microsoft Azure",
 

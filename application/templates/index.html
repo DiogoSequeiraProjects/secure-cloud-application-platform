@@ -25,12 +25,17 @@
     </header>
 
     <main class="page">
-        <section class="intro">
+            <section class="intro">
             <p class="eyebrow">Flask &middot; Azure &middot; Terraform &middot; DevSecOps</p>
-            <h1>Production-ready cloud application platform</h1>
+            <h1>Secure Cloud Application Platform</h1>
             <p class="lede">
-                A hardened Flask application, provisioned as code and deployed to Azure,
-                with security and observability built in from the first commit.
+                A secure cloud application platform built with Flask, Terraform
+                and DevSecOps practices.
+            </p>
+            <p class="lede">
+                <strong>Demo environment:</strong>
+                The metrics displayed below are illustrative and are not
+                connected to live monitoring data.
             </p>
         </section>
 
@@ -46,7 +51,7 @@
                         <h2 class="card-title">Platform Status</h2>
                     </div>
                     <span class="status-pill status-ok">
-                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Operational
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Demo
                     </span>
                 </div>
                 <dl class="metric-list">
@@ -63,7 +68,7 @@
                         <dd>{{ platform.services }}</dd>
                     </div>
                 </dl>
-                <p class="card-footnote">Last deploy verified and healthy.</p>
+                <p class="card-footnote">Deployment status is not connected to live checks.</p>
             </article>
 
             <article class="card">
@@ -76,7 +81,7 @@
                         <h2 class="card-title">Security</h2>
                     </div>
                     <span class="status-pill status-ok">
-                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Protected
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Sample
                     </span>
                 </div>
                 <dl class="metric-list">
@@ -93,7 +98,7 @@
                         <dd>{{ platform.audit }}</dd>
                     </div>
                 </dl>
-                <p class="card-footnote">Scans run on every pull request.</p>
+                <p class="card-footnote">Security checks are executed by the CI pipeline.</p>
             </article>
 
             <article class="card">
@@ -106,7 +111,7 @@
                         <h2 class="card-title">Infrastructure</h2>
                     </div>
                     <span class="status-pill status-ok">
-                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Provisioned
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Planned
                     </span>
                 </div>
                 <dl class="metric-list">
@@ -123,7 +128,7 @@
                         <dd>{{ platform.drift }}</dd>
                     </div>
                 </dl>
-                <p class="card-footnote">State reconciled on last apply.</p>
+                <p class="card-footnote">Terraform configuration is validated in CI.</p>
             </article>
 
             <article class="card">
@@ -136,7 +141,7 @@
                         <h2 class="card-title">Monitoring</h2>
                     </div>
                     <span class="status-pill status-ok">
-                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Watching
+                        <span class="pulse-dot pulse-ok" aria-hidden="true"></span>Demo
                     </span>
                 </div>
                 <dl class="metric-list">
@@ -153,7 +158,7 @@
                         <dd>{{ platform.incident }}</dd>
                     </div>
                 </dl>
-                <p class="card-footnote">Logs and metrics streamed in real time.</p>
+                <p class="card-footnote">Monitoring integration is planned; metrics are illustrative.</p>
             </article>
 
         </section>
